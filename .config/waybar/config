@@ -2,41 +2,16 @@
     "margin-left": 20,
     "margin-right": 20,
     "margin-top": 20,
-    "height": 30,
-    "spacing": 5,
-    "layer": "top",
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "clock"],
-    "hyprland/window": {
-        "max-length": 200,
-        "separate-outputs": true
-    },
-    "wlr/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-    },
+    "modules-right": ["pulseaudio","clock"],
+    
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
+    },    
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",

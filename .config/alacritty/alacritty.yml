@@ -2,6 +2,6 @@ window:
     opacity: 0.5
 
 font:
-    size: 18
+    size: 16
     normal:
         family: JetBrainsMonoNerdFont
