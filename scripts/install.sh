@@ -2,27 +2,40 @@
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$DOTFILES_DIR"
 
-link_dir () {
-  local src="$1"
-  local dst="$2"
+STOW_PACKAGES=(hypr waybar alacritty)
 
-  mkdir -p "$(dirname "$dst")"
+PACMAN_PKGS=(
+  stow
+  hyprland
+  hyprpaper
+  hyprpicker
+  hyprshot
+  waybar
+  alacritty
+  dmenu
+  git
+  fish
+  # add more if needed
+)
 
-  if [ -e "$dst" ] || [ -L "$dst" ]; then
-    # se já existe, faz backup (pra não perder nada)
-    local backup="${dst}.bak.$(date +%F-%H%M%S)"
-    echo "📦 Backing up $dst -> $backup"
-    mv "$dst" "$backup"
-  fi
-
-  echo "🔗 Linking $dst -> $src"
-  ln -s "$src" "$dst"
+need_cmd() {
+  command -v "$1" >/dev/null 2>&1
 }
 
-link_dir "$DOTFILES_DIR/hypr"   "$HOME/.config/hypr"
-link_dir "$DOTFILES_DIR/waybar" "$HOME/.config/waybar"
+if ! need_cmd pacman; then
+  echo "pacman not found. This installer is for Arch-based distros."
+  exit 1
+fi
 
-echo "✅ Dotfiles installed successfully"
-echo "ℹ️ Restart Hyprland session (or run: hyprctl reload; pkill waybar; waybar &)"
+# Install packages (only missing ones)
+sudo pacman -Syu --needed "${PACMAN_PKGS[@]}"
 
+# Apply dotfiles via stow
+stow -R -t "$HOME" "${STOW_PACKAGES[@]}"
+
+echo "Done."
+echo "If needed:"
+echo "  hyprctl reload"
+echo "  pkill waybar; waybar &"
