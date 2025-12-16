@@ -1,0 +1,87 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 28,
+  "margin-top": 20,
+  "margin-left": 20,
+  "margin-right": 20,
+  "spacing": 12,
+
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "mpris",
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "clock"
+  ],
+
+  "hyprland/workspaces": {
+    "all-outputs": false,
+    "disable-scroll": true,
+    "sort-by-number": true,
+    "format": "{name}",
+    "format-icons": {
+      "default": "●",
+      "urgent": "",
+      "active": ""
+    },
+    "show-special": false
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": false,
+    "max-length": 60,
+    "empty-format": "Desktop"
+  },
+
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% ",
+    "format-muted": "",
+    "tooltip": false,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+
+  "tray": {
+    "spacing": 6,
+    "icon-size": 16
+  },
+
+  "mpris": {
+    "player": "spotify",
+    "format": "{status_icon} {title} — {artist}",
+    "format-paused": "{status_icon} {title} — {artist}",
+    "format-icons": {
+      "playing": "",
+      "paused": "",
+      "stopped": ""
+    },
+    "max-length": 40,
+    "tooltip-format": "{player}: {status}\n{title}\n{artist} — {album}",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "playerctl -p spotify next",
+    "on-scroll-up": "playerctl -p spotify previous",
+    "on-scroll-down": "playerctl -p spotify next"
+  },
+
+  "clock": {
+    "format": "{:%d-%m-%Y %H:%M}",
+    "tooltip": true,
+    "tooltip-format": "{:%A, %d %B %Y\n%H:%M:%S}"
+  }
+}
