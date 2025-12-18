@@ -1,0 +1,52 @@
+:root {
+  --background: rgba(18, 18, 18, 0.9);
+  --notification-background: rgba(24, 24, 24, 0.95);
+  --border-color: rgb(255, 255, 255);
+  --text-color: #f5f5f5;
+}
+
+notificationwindow,
+#control-center,
+#notifications {
+  background: transparent;
+  color: var(--text-color);
+}
+
+window#control-center,
+window#notifications,
+.notification-row .notification-background,
+.notification-row .notification-background .notification,
+.notification-row .notification-background .notification .notification-default-action,
+.notification-row .notification-background .notification .notification-default-action .notification-content,
+.notification-row .notification-background .notification .notification-default-action .notification-content .image,
+.notification button,
+.notification .close-button {
+  border-radius: 0;
+}
+
+#control-center .widget,
+#control-center .widget-title,
+.notification-row .notification-background .notification {
+  background-color: var(--notification-background);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  box-shadow: none;
+}
+
+.notification button,
+.notification .close-button {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.notification button:hover,
+.notification .close-button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+window#control-center,
+window#notifications {
+  margin-top: 10px;
+  margin-right: 10px;
+}
