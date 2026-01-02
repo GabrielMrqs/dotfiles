@@ -4,7 +4,7 @@ set -euo pipefail
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$DOTFILES_DIR"
 
-STOW_PACKAGES=(hypr waybar alacritty swaync)
+STOW_PACKAGES=(hypr waybar alacritty swaync fish)
 
 PACMAN_PKGS=(
   stow
